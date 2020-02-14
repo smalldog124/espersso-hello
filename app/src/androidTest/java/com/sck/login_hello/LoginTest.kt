@@ -1,7 +1,8 @@
 package com.sck.login_hello
 
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -28,6 +29,12 @@ class LoginTest {
     @Test
     fun changeText_sameActivity() {
 
+        onView(withId(R.id.userNameInput))
+            .perform(replaceText("Smalldoc"))
+
+        onView(withId(R.id.passwordInput))
+            .perform(typeText("brassed"))
+        closeSoftKeyboard()
         onView(withId(R.id.loginButton))
             .perform(click())
 
